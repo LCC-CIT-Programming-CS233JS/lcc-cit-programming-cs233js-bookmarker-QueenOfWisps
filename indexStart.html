@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>My Bookmarking App in JavaScript</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stylesStart.css">
 </head>
 <body>
     <div class="overlay"></div>
@@ -12,18 +12,49 @@
     <div class="floater content">
         <form class="bookmark-form">
             <div class="floater-top">
-                <input id="url" type="text" class="form-control">
-                <input id="description" type="text" class="form-control">
+                <h1>Title: </h1><input id="title" type="text" class="form-control">
+                <h1>URL: </h1><input id="url" type="text" class="form-control">
+                <h1>Description:</h1> <input id="description" type="text" class="form-control">
+                
             </div>
             <div class="floater-bottom">
-                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                <button type="submit" id="addBtn"class="btn btn-primary btn-sm">Add</button>
             </div>
         </form>
     </div>
-
-    <div class="bookmarks-list content">
-        
-    </div>
-    <script src="src/index.js"></script>    
+    <ul class="list-group" id="Bookmarkslist">
+        <li class="list-group-item checkbox">
+          <div class="row">
+            <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 ">
+                <ul>
+                    <li>Title:</li>
+                    <li>URL:</li>
+                    <li>description:</li>
+                 </ul>
+            </div>
+            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
+              <a class="" href="/"><i class="delete-icon glyphicon glyphicon-trash"></i></a>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item checkbox">
+            <div class="row">
+              <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 ">
+                  <ul >
+                      <li>Title:</li>
+                      <li>URL:</li>
+                      <li>description:</li>
+                   </ul>
+              </div>
+              <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
+                <a class="" href="/"><i name ="trash" class="delete-icon glyphicon glyphicon-trash"></i></a>
+              </div>
+            </div>
+          </li>
+    </ul>
+    
+    
+ 
+    <script src="src/indexStart.js"></script>   
 </body>
 </html>
