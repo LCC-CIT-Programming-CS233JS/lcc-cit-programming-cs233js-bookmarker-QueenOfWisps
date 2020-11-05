@@ -144,10 +144,7 @@ class BookMarker
             }
             this.bookmarks.push(myBookmark);
             this.fillBookMarksList();
-            title="";
-            url="";
-            description="";
-            image="";
+            
 
 
 
