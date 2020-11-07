@@ -4,7 +4,9 @@ class BookMarker
 {
     constructor()
     {
-            
+        this.apiUrl = 'https://opengraph.io/api/1.1/site';
+        this.appId = 'e5925833-3fc1-409c-b40e-264b5ecba386';
+         
         if(!localStorage["BOOKMARKS"])
         {
             //this is an array of objects with thier own index. reer to image in 0 by bookmarks[0].dedscription. or even backwards like 
@@ -131,24 +133,35 @@ class BookMarker
     */
         addBookmark(event)
         {
-            let title= document.getElementById("title").value;
-            let url= document.getElementById("url").value;
-            let description= document.getElementById("description").value;
-            let image="";
             event.preventDefault();
-             let myBookmark= {
-                description: description,
-                image: image,
-                link: url,
-                title: title
-            }
-            this.bookmarks.push(myBookmark);
-            this.fillBookMarksList();
-            
+            let title= document.getElementById("title").value;
+            const urlForHref = document.querySelector("#url").value;
+            const url =  encodeURIComponent(urlForHref);
+            let description= document.getElementById("description").value;
+            fetch(`${this.apiUrl}/${url}?app_id=${this.appId}`).
+            then (response => response.json())
+            .then(data => 
+                { 
+                const myBookmark = {
+                    description: description,
+                    image: data.hybridGraph.image,
+                    link: urlForHref,
+                    title: data.hybridGraph.title
+                }; 
+                // add the data from the apito our bookmark
+                //this.bookmarks.push(bookmark); 
+                //add the bookmark to the list
+                this.bookmarks.push(myBookmark);  
+                this.fillBookMarksList();   
+                //this.fillBookmarksList(this.bookmark);
+                document.querySelector('.bookmark-form').reset();
+            })
+            .catch(error => {console.log('There was a problem getting info!'); 
+            }); 
 
-
-
-        }
+           
+         }
+        
         
 
         
